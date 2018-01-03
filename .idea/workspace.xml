@@ -2,102 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bc5fbef3-37ab-4854-a5b2-69c29f42f61a" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/javaSwapChain/alldata.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/javaSwapChain/bin/.idea/.name" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/javaSwapChain/bin/.idea/compiler.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/javaSwapChain/bin/.idea/copyright/profiles_settings.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/javaSwapChain/bin/.idea/misc.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/javaSwapChain/bin/.idea/modules.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/javaSwapChain/bin/.idea/src.iml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/javaSwapChain/bin/.idea/vcs.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/javaSwapChain/bin/.idea/workspace.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/javaSwapChain/bin/SwapChain/Customer.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/javaSwapChain/bin/SwapChain/Dis_list.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/javaSwapChain/bin/SwapChain/Dominate.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/javaSwapChain/bin/SwapChain/Front.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/javaSwapChain/bin/SwapChain/GA.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/javaSwapChain/bin/SwapChain/Gene.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/javaSwapChain/bin/SwapChain/GenePlus.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/javaSwapChain/bin/SwapChain/ICrowd.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/javaSwapChain/bin/SwapChain/IOData.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/javaSwapChain/bin/SwapChain/Main.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/javaSwapChain/bin/SwapChain/Match.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/javaSwapChain/bin/SwapChain/NSGAII.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/javaSwapChain/bin/SwapChain/Provider.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/javaSwapChain/bin/SwapChain/Providers.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/javaSwapChain/bin/SwapChain/Queue.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/javaSwapChain/bin/SwapChain/SearchOptimal.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/javaSwapChain/bin/SwapChain/SwapChainSolver.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/javaSwapChain/customersdata.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/javaSwapChain/pydata.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/javaSwapChain/src/.idea/.name" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/javaSwapChain/src/.idea/compiler.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/javaSwapChain/src/.idea/copyright/profiles_settings.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/javaSwapChain/src/.idea/misc.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/javaSwapChain/src/.idea/modules.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/javaSwapChain/src/.idea/src.iml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/javaSwapChain/src/.idea/vcs.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/javaSwapChain/src/.idea/workspace.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/javaSwapChain/src/SwapChain/Customer.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/javaSwapChain/src/SwapChain/Dis_list.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/javaSwapChain/src/SwapChain/Dominate.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/javaSwapChain/src/SwapChain/Front.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/javaSwapChain/src/SwapChain/GA.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/javaSwapChain/src/SwapChain/Gene.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/javaSwapChain/src/SwapChain/GenePlus.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/javaSwapChain/src/SwapChain/ICrowd.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/javaSwapChain/src/SwapChain/IOData.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/javaSwapChain/src/SwapChain/Main.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/javaSwapChain/src/SwapChain/Match.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/javaSwapChain/src/SwapChain/NSGAII.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/javaSwapChain/src/SwapChain/Provider.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/javaSwapChain/src/SwapChain/Providers.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/javaSwapChain/src/SwapChain/Queue.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/javaSwapChain/src/SwapChain/SearchOptimal.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/javaSwapChain/src/SwapChain/SwapChainSolver.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/pySwapChain/10132215/.idea/.name" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/pySwapChain/10132215/.idea/10132215.iml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/pySwapChain/10132215/.idea/misc.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/pySwapChain/10132215/.idea/modules.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/pySwapChain/10132215/.idea/vcs.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/pySwapChain/10132215/.idea/workspace.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/pySwapChain/10132215/SearchOptimal.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/pySwapChain/10132215/SwapChainForSpark.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/pySwapChain/10132215/alldata.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/pySwapChain/10132215/pySwapChain.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/pySwapChain/10132215/pySwapChain1.1.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/pySwapChain/SearchOptimal.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/pySwapChain/alldata.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/pySwapChain/pySwapChain.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/pySwapChain/pySwapChain0.0.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/pySwapChain/pySwapChain1.1.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/pySwapChain/test.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/pyspark/pySwapChain/.idea/.name" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/pyspark/pySwapChain/.idea/misc.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/pyspark/pySwapChain/.idea/modules.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/pyspark/pySwapChain/.idea/pySwapChain.iml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/pyspark/pySwapChain/.idea/vcs.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/pyspark/pySwapChain/.idea/workspace.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/pyspark/pySwapChain/201510140905/.idea/.name" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/pyspark/pySwapChain/201510140905/.idea/201510140905.iml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/pyspark/pySwapChain/201510140905/.idea/misc.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/pyspark/pySwapChain/201510140905/.idea/modules.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/pyspark/pySwapChain/201510140905/.idea/vcs.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/pyspark/pySwapChain/201510140905/.idea/workspace.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/pyspark/pySwapChain/201510140905/SearchOptimal.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/pyspark/pySwapChain/201510140905/SwapChainForSpark.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/pyspark/pySwapChain/201510140905/SwapChainForSpark1.2.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/pyspark/pySwapChain/201510140905/SwapChainForSpark1.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/pyspark/pySwapChain/201510140905/alldata.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/pyspark/pySwapChain/201510140905/dependencyClass.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/pyspark/pySwapChain/201510140905/pySwapChain.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/pyspark/pySwapChain/201510140905/pySwapChain1.1.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/pyspark/pySwapChain/SearchOptimal.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/pyspark/pySwapChain/alldata.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/pyspark/pySwapChain/pySwapChain.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/pyspark/pySwapChain/pySwapChain1.1.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/pyspark/pySwapChain/pySwapChainForSpark.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/pyspark/pySwapChain/test.py" afterPath="" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/new experiment/EDA.py" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/new experiment/SearchOptimal.py" afterPath="$PROJECT_DIR$/new experiment/SearchOptimal.py" />
+      <change beforePath="$PROJECT_DIR$/new experiment/alldata.txt" afterPath="$PROJECT_DIR$/new experiment/alldata.txt" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -111,8 +19,8 @@
       <file leaf-file-name="SearchOptimal.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/new experiment/SearchOptimal.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-7638">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="282">
+              <caret line="40" column="17" lean-forward="true" selection-start-line="40" selection-start-column="17" selection-end-line="40" selection-end-column="17" />
               <folding>
                 <element signature="e#0#37#0" expanded="true" />
               </folding>
@@ -130,11 +38,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GA.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="GA.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/new experiment/GA.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="418">
-              <caret line="22" column="25" lean-forward="true" selection-start-line="22" selection-start-column="25" selection-end-line="22" selection-end-column="25" />
+            <state relative-caret-position="457">
+              <caret line="510" column="8" lean-forward="false" selection-start-line="510" selection-start-column="8" selection-end-line="510" selection-end-column="21" />
               <folding>
                 <element signature="e#0#37#0" expanded="true" />
               </folding>
@@ -142,7 +50,32 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="EDA.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/new experiment/EDA.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="143">
+              <caret line="454" column="0" lean-forward="true" selection-start-line="454" selection-start-column="0" selection-end-line="454" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#10#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
     </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>calcF</find>
+      <find>sort</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -151,12 +84,14 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/pyspark/pySwapChain/SearchOptimal.py" />
+        <option value="$PROJECT_DIR$/new experiment/SearchOptimal.py" />
+        <option value="$PROJECT_DIR$/new experiment/EDA.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="260" />
-    <option name="y" value="20" />
+  <component name="ProjectFrameBounds" extendedState="1">
+    <option name="x" value="180" />
+    <option name="y" value="14" />
     <option name="width" value="1400" />
     <option name="height" value="1000" />
   </component>
@@ -210,7 +145,25 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.GA">
+  <component name="RunManager" selected="Python.EDA">
+    <configuration name="EDA" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/new experiment" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="SwapChain" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/new experiment/EDA.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
     <configuration name="GA" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -265,16 +218,18 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <list size="3">
+    <list size="4">
       <item index="0" class="java.lang.String" itemvalue="Python.pySwapChain1.1" />
       <item index="1" class="java.lang.String" itemvalue="Python.SearchOptimal" />
       <item index="2" class="java.lang.String" itemvalue="Python.GA" />
+      <item index="3" class="java.lang.String" itemvalue="Python.EDA" />
     </list>
     <recent_temporary>
-      <list size="3">
-        <item index="0" class="java.lang.String" itemvalue="Python.GA" />
+      <list size="4">
+        <item index="0" class="java.lang.String" itemvalue="Python.EDA" />
         <item index="1" class="java.lang.String" itemvalue="Python.SearchOptimal" />
-        <item index="2" class="java.lang.String" itemvalue="Python.pySwapChain1.1" />
+        <item index="2" class="java.lang.String" itemvalue="Python.GA" />
+        <item index="3" class="java.lang.String" itemvalue="Python.pySwapChain1.1" />
       </list>
     </recent_temporary>
   </component>
@@ -295,18 +250,19 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="180" y="14" width="1400" height="1000" extended-state="1" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18020834" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32946146" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31200898" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39915523" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -320,7 +276,9 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="2" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
@@ -336,13 +294,11 @@
     <entry file="file://$PROJECT_DIR$/pyspark/pySwapChain/201510140905/alldata.txt" />
     <entry file="file://$PROJECT_DIR$/pyspark/pySwapChain/201510140905/SearchOptimal.py" />
     <entry file="file://$PROJECT_DIR$/pyspark/pySwapChain/201510140905/pySwapChain1.1.py" />
-    <entry file="file://$PROJECT_DIR$/new experiment/SearchOptimal.py">
+    <entry file="file://$USER_HOME$/.PyCharmCE2017.3/system/python_stubs/1144053959/__builtin__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-7638">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#37#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="258">
+          <caret line="377" column="4" lean-forward="false" selection-start-line="377" selection-start-column="4" selection-end-line="377" selection-end-column="4" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -356,10 +312,30 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/new experiment/GA.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="22" column="25" lean-forward="true" selection-start-line="22" selection-start-column="25" selection-end-line="22" selection-end-column="25" />
+        <state relative-caret-position="457">
+          <caret line="510" column="8" lean-forward="false" selection-start-line="510" selection-start-column="8" selection-end-line="510" selection-end-column="21" />
           <folding>
             <element signature="e#0#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/new experiment/SearchOptimal.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="282">
+          <caret line="40" column="17" lean-forward="true" selection-start-line="40" selection-start-column="17" selection-end-line="40" selection-end-column="17" />
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/new experiment/EDA.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="143">
+          <caret line="454" column="0" lean-forward="true" selection-start-line="454" selection-start-column="0" selection-end-line="454" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
           </folding>
         </state>
       </provider>

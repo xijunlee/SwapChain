@@ -1,10 +1,8 @@
-from __future__ import print_function
-
 import sys
 import math
-#from pyspark import SparkContext
+import numpy
 from random import randint
-from random import random
+import random
 import copy
 
 class ProviderPlus:
@@ -36,10 +34,6 @@ class PO:
         self.PROVIDERS = []
         self.CUSTOMERS = []
 
-po = PO()
-theMinCost = float('inf')
-answerSerial = []
-D = 40
 
 class Chromosome:
     def __init__(self):
@@ -71,8 +65,7 @@ class SwapChainSolver:
         self.initiallize_assignment()
         while True:
             extremeMatch = copy.deepcopy(self.find_d_satisfiable())
-            if extremeMatch:
-                print(extremeMatch.o,extremeMatch.p,extremeMatch.w,extremeMatch.dis)
+
             if not extremeMatch:
                 break
             else:
@@ -311,66 +304,6 @@ class SwapChainSolver:
         '''for i in range(0,len(self.Assignment)):
             print(self.Assignment[i].o, self.Assignment[i].p, self.Assignment[i].w, self.Assignment[i].dis)
         '''
-def ChromosomesInitiallize(chromosomesSize,geneLength,data,D):
-    chromosomes = []
-    for i in range(chromosomesSize):
-        chromosome = Chromosome()
-        for j in range(geneLength):
-            chromosome.geneSerial.append(randint(0,data.PROVIDERS[j].cnt-1))
-        #for test,will be deleted in real environment
-        chromosome.fitness = CalcFitness(i,chromosome.geneSerial,data,D)
-        chromosomes.append(chromosome)
-    return chromosomes
-
-def returnFitness(x):
-    return x.fitness
-
-def CalcFitness(chromosomeNo, geneSerial, data):
-    """
-        usage ChromosomeNumber,geneSerial,data,D
-        return fitness for this1  Chromosome
-    """
-    alpha = 10000000.00
-    beta = 0.01
-    # alpha and beta are weight factor
-    customers = []
-    fitness = 0
-    for item in data.CUSTOMERS:
-        tmp = Customer()
-        tmp.x = copy.deepcopy(item.x)
-        tmp.y = copy.deepcopy(item.y)
-        tmp.demand = copy.deepcopy(item.demand)
-        customers.append(tmp)
-    providers = []
-    sigmaCost = 0
-    sigmaCapacity = 0
-    sigmaDemand = 0
-    mmd = False
-    for i in range(0,len(geneSerial)):
-        tmpProvider = Provider()
-        tmpProvider.x = copy.deepcopy(data.PROVIDERS[i].x)
-        tmpProvider.y = copy.deepcopy(data.PROVIDERS[i].y)
-        tmpProvider.capacity = copy.deepcopy(data.PROVIDERS[i].capacity[geneSerial[i]])
-        tmpProvider.cost = copy.deepcopy(data.PROVIDERS[i].cost[geneSerial[i]])
-        sigmaCost = sigmaCost + tmpProvider.cost
-        sigmaCapacity = sigmaCapacity + tmpProvider.capacity
-        providers.append(tmpProvider)
-    for item in customers:
-        sigmaDemand = sigmaDemand + item.demand
-
-    if sigmaCapacity >= sigmaDemand:
-        swapchainsolver = SwapChainSolver(providers, customers)
-        mmd = swapchainsolver.Solver()
-
-    return mmd,sigmaCost
-
-    #swapchainsolver.initiallize_assignment()
-    # print for debug
-    """for i in range(len(customers)):
-        print(customers[i].x,customers[i].y,customers[i].demand)
-        for i in range(len(providers)):
-            print(providers[i].x,providers[i].y,providers[i].capacity,providers[i].cost)"""
-
 
 def LoadDataFromText(txtpath):
     """
@@ -404,42 +337,137 @@ def LoadDataFromText(txtpath):
         CUSTOMERS.append(tmpCustomer)
     return PROVIDERS, CUSTOMERS
 
-def SearchOptimal(step,serial):
-    if step >= len(po.PROVIDERS):
-        print(serial)
-        mmd,sigmaCost = CalcFitness(0,serial,po)
-        global theMinCost
-        global answerSerial
-        if mmd != False and mmd <= D:
-            if sigmaCost <= theMinCost:
-                theMinCost = sigmaCost
-                answerSerial= copy.deepcopy(serial)
+class EDA:
+    def __init__(self, populationSize, iterationMax, blockMax, po, alpha, beta,D):
 
-        if mmd !=False:
-            print("mmd,sigmaCost,Serial",mmd,sigmaCost,serial)
+        self.m_PO = po
+        self.m_D = D
+        self.m_PopSize = populationSize
+        self.m_iterMax = iterationMax
+        self.m_Alpha = alpha
+        self.m_Beta = beta
+        self.m_Population = []
+        self.m_BestSolution = []
+        self.m_BestFitness = -65536
+        self.m_BlockMax = blockMax
+        self.m_Block = 0
+        # init the EDA matrix
+        self.m_Matrix = [[1 for _ in range(self.m_PO.PROVIDERS[0].cnt)] for _ in range(len(self.m_PO.PROVIDERS))]
+
+    def calcFitness(self, geneSerial, data, D):
+        """
+            usage ChromosomeNumber,geneSerial,data,D
+            return fitness for this1  Chromosome
+        """
+        alpha = self.m_Alpha
+        beta = self.m_Beta
+        # alpha and beta are weight factor
+        customers = []
+        fitness = 0
+        for item in data.CUSTOMERS:
+            tmp = Customer()
+            tmp.x = copy.deepcopy(item.x)
+            tmp.y = copy.deepcopy(item.y)
+            tmp.demand = copy.deepcopy(item.demand)
+            customers.append(tmp)
+        providers = []
+        sigmaCost = 0
+        sigmaCapacity = 0
+        sigmaDemand = 0
+        mmd = -1000.00
+        for i in range(0, len(geneSerial)):
+            tmpProvider = Provider()
+            tmpProvider.x = copy.deepcopy(data.PROVIDERS[i].x)
+            tmpProvider.y = copy.deepcopy(data.PROVIDERS[i].y)
+            tmpProvider.capacity = copy.deepcopy(data.PROVIDERS[i].capacity[geneSerial[i]])
+            tmpProvider.cost = copy.deepcopy(data.PROVIDERS[i].cost[geneSerial[i]])
+            sigmaCost = sigmaCost + tmpProvider.cost
+            sigmaCapacity = sigmaCapacity + tmpProvider.capacity
+            providers.append(tmpProvider)
+        for item in customers:
+            sigmaDemand = sigmaDemand + item.demand
+
+        if sigmaCapacity >= sigmaDemand:
+            swapchainsolver = SwapChainSolver(providers, customers)
+            mmd = swapchainsolver.Solver()
+            if mmd > D:
+                fitness = -1000.00
+            else:
+                if sigmaCost != 0:
+                    fitness = float(1000.0 / sigmaCost)
+                else:
+                    fitness = 1e8
+        # print("fitness,mmd,sigmaCapacity,sigmaCost,sigmaDemand:",fitness,mmd,sigmaCapacity,sigmaCost,sigmaDemand)
+        return fitness
+
+    def initializePopulation(self):
+        self.m_Population = []
+        for i in xrange(self.m_PopSize):
+            chromosome = Chromosome()
+            chromosome.geneSerial = self.sample()
+            chromosome.fitness = self.calcFitness(chromosome.geneSerial,self.m_PO,self.m_D)
+            self.m_Population.append(chromosome)
+
+    def update(self):
+        sortedPopulation = sorted(self.m_Population, key = lambda x:x.fitness, reverse=True)
+        if sortedPopulation[0].fitness - self.m_BestFitness:
+            self.m_BestFitness = sortedPopulation[0].fitness
+            self.m_BestSolution = copy.deepcopy(sortedPopulation[0].geneSerial)
+            self.m_Block = 0
         else:
-            print("False,sigmaCost,Serial",mmd,sigmaCost,serial)
+            self.m_Block += 1
+        sigmaCost = 0
+        for i in range(len(self.m_BestSolution)):
+            sigmaCost = sigmaCost + po.PROVIDERS[i].cost[self.m_BestSolution[i]]
+        print "the best individual fitness,sigmaCost,geneSerial ",self.m_BestFitness,sigmaCost,self.m_BestSolution
+        for i in range(1):
+            gene = sortedPopulation[i].geneSerial
+            for p in range(len(self.m_Matrix)):
+                row = self.m_Matrix[p]
+                row[gene[p]] += 1
 
-        return
 
-    else:
-        for i in range(po.PROVIDERS[step].cnt):
-            serial.append(i)
-            SearchOptimal(step+1,serial)
-            serial.pop()
+    def sample(self):
+        geneSerial = []
+        for p in range(len(self.m_Matrix)):
+            # each row is for a provider, the length of row is equal to number of capacities of the provider
+            row = self.m_Matrix[p]
+            rowSum = float(sum(row))
+            cumulateRow = [0 for _ in range(len(row))]
+            cumulateRow[0] = row[0] / rowSum
+            for i in range(1,len(row)):
+                cumulateRow[i] = cumulateRow[i-1]+ row[i] / rowSum
+            rnd = random.random()
+            for i in range(len(row)):
+                if cumulateRow[i] >= rnd:
+                    geneSerial.append(i)
+                    break
+        return geneSerial
+
+    def evaluate(self):
+        iter = 0
+        while iter < self.m_iterMax and self.m_Block < self.m_BlockMax:
+            print "the " + str(iter) + " th iteration"
+            self.initializePopulation()
+            self.update()
+            iter += 1
+
 
 
 if __name__ == "__main__":
     # po is data contains informantion about PROVIDERS and CUSTOMERS
+    po = PO()
     # read providers and customers data from text
     po.PROVIDERS, po.CUSTOMERS = LoadDataFromText(r"alldata.txt")
 
-    serial = []
-    for i in range(po.PROVIDERS[0].cnt):
-        serial.append(i)
-        SearchOptimal(1,serial)
-        serial.remove(i)
-    print()
-    print("theMinCost",theMinCost)
-    for item in answerSerial:
-        print(item)
+    popSize = 100
+    iterMax = 300
+    blockMax = 10
+    alpha = 10000000.00
+    beta = 0.01
+    D = 40.0
+
+    eda = EDA(popSize, iterMax, blockMax, po, alpha, beta, D)
+    eda.evaluate()
+    print eda.m_BestFitness, eda.m_BestSolution
+
