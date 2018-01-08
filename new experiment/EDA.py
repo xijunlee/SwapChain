@@ -1,4 +1,3 @@
-
 import math
 import random
 from random import randint
@@ -11,15 +10,9 @@ from Customer import Customer
 from Provider import Provider
 from ProviderPlus import ProviderPlus
 import numpy as np
+from Chromosome import Chromosome
+from FileProcess import *
 
-class Chromosome:
-    def __init__(self):
-        self.geneSerial = []
-        self.fitness = 0
-        self.sigmaCost = 0
-        self.sigmaDemand = 0
-        self.sigmaCapacity = 0
-        self.mmd = 0
 
 class EDA:
     def __init__(self, populationSize, iterationMax, blockMax, po, alpha, beta, D, surrogateFlag, sizeRatio=0.3):
@@ -65,7 +58,7 @@ class EDA:
         sigmaCost = 0
         sigmaCapacity = 0
         sigmaDemand = 0
-        mmd = -1000.00
+        mmd = self.m_D * 1000.0
         for i in range(0, len(geneSerial)):
             tmpProvider = Provider()
             tmpProvider.x = copy.deepcopy(data.PROVIDERS[i].x)
@@ -85,15 +78,15 @@ class EDA:
                 fitness = -1000
             elif mmd > 0:
                 if sigmaCost != 0:
-                    fitness = float(1000.0 / sigmaCost)
+                    fitness = float(4.0 / sigmaCost)
                 else:
-                    fitness = 1e8
+                    fitness = 8.0
             else:
-                fitness = -1e8
-        #print"fitness,mmd,sigmaCapacity,sigmaCost,sigmaDemand:",fitness,mmd,sigmaCapacity,sigmaCost,sigmaDemand
-        return fitness,mmd,sigmaCapacity,sigmaCost,sigmaDemand
-
-
+                fitness = -6.0
+        else:
+            fitness = -8.0
+        # print"fitness,mmd,sigmaCapacity,sigmaCost,sigmaDemand:",fitness,mmd,sigmaCapacity,sigmaCost,sigmaDemand
+        return math.exp(fitness), mmd, sigmaCapacity, sigmaCost, sigmaDemand
 
     def calcFitness(self, geneSerial, data, D):
         """
@@ -115,7 +108,7 @@ class EDA:
         sigmaCost = 0
         sigmaCapacity = 0
         sigmaDemand = 0
-        mmd = -1000.00
+        mmd = self.m_D * 1000.0
         for i in range(0, len(geneSerial)):
             tmpProvider = Provider()
             tmpProvider.x = copy.deepcopy(data.PROVIDERS[i].x)
@@ -132,14 +125,16 @@ class EDA:
             swapchainsolver = SwapChainSolver(providers, customers)
             mmd = swapchainsolver.Solver()
             if mmd > D:
-                fitness = -1000.00
+                fitness = -4.0
             else:
                 if sigmaCost != 0:
-                    fitness = float(1000.0 / sigmaCost)
+                    fitness = float(4.0 / sigmaCost)
                 else:
-                    fitness = 1e8
+                    fitness = 8.0
+        else:
+            fitness = -8.0
         # print("fitness,mmd,sigmaCapacity,sigmaCost,sigmaDemand:",fitness,mmd,sigmaCapacity,sigmaCost,sigmaDemand)
-        return fitness, mmd, sigmaCapacity, sigmaCost, sigmaDemand
+        return math.exp(fitness), mmd, sigmaCapacity, sigmaCost, sigmaDemand
 
     def initializePopulation(self):
         self.m_Population = []
@@ -147,31 +142,36 @@ class EDA:
             chromosome = Chromosome()
             chromosome.geneSerial = self.sample()
             if self.m_SurrogateFlag:
-                chromosome.fitness, chromosome.mmd, chromosome.sigmaCapacity, chromosome.sigmaCost, chromosome.sigmaDemand = self.calcFitnessWithSurrogate(chromosome.geneSerial,self.m_PO, self.m_D)
+                chromosome.fitness, chromosome.mmd, chromosome.sigmaCapacity, chromosome.sigmaCost, chromosome.sigmaDemand = self.calcFitnessWithSurrogate(
+                    chromosome.geneSerial, self.m_PO, self.m_D)
             else:
-                chromosome.fitness, chromosome.mmd, chromosome.sigmaCapacity, chromosome.sigmaCost, chromosome.sigmaDemand = self.calcFitness(chromosome.geneSerial,self.m_PO, self.m_D)
+                chromosome.fitness, chromosome.mmd, chromosome.sigmaCapacity, chromosome.sigmaCost, chromosome.sigmaDemand = self.calcFitness(
+                    chromosome.geneSerial, self.m_PO, self.m_D)
             self.m_Population.append(chromosome)
 
     def update(self):
-        sortedPopulation = sorted(self.m_Population, key = lambda x:x.fitness, reverse=True)
+        sortedPopulation = sorted(self.m_Population, key=lambda x: x.fitness, reverse=True)
 
         if sortedPopulation[0].fitness > self.m_BestFitness:
             self.m_BestFitness = sortedPopulation[0].fitness
-            self.m_BestSolution = copy.deepcopy(sortedPopulation[0].geneSerial)
+            self.m_BestSolution = copy.deepcopy(sortedPopulation[0])
             self.m_Block = 0
-            self.m_BestCost = sortedPopulation[0].sigmaCost
-        else:
+        elif math.fabs(sortedPopulation[0].fitness - self.m_BestFitness) <= 0.00001:
             self.m_Block += 1
-        #sigmaCost = 0
-        #for i in range(len(self.m_BestSolution)):
+        # sigmaCost = 0
+        # for i in range(len(self.m_BestSolution)):
         #    sigmaCost = sigmaCost + po.PROVIDERS[i].cost[self.m_BestSolution[i]]
-        #print "the best individual serial, fitness, mmd, sigmaCost, sigmaCapacity, sigmaDemand ",sortedPopulation[0].geneSerial, sortedPopulation[0].fitness,sortedPopulation[0].mmd, sortedPopulation[0].sigmaCost, sortedPopulation[0].sigmaCapacity, sortedPopulation[0].sigmaDemand
-        for i in range(1):
+        #print "the best individual serial, fitness, mmd, sigmaCost, sigmaCapacity, sigmaDemand ",\
+        #     sortedPopulation[0].geneSerial, sortedPopulation[0].fitness,sortedPopulation[0].mmd, sortedPopulation[0].sigmaCost, sortedPopulation[0].sigmaCapacity, sortedPopulation[0].sigmaDemand
+        #for ind in sortedPopulation:
+        #    print "the individual serial, fitness, mmd, sigmaCost, sigmaCapacity, sigmaDemand ", \
+        #        ind.geneSerial, ind.fitness, ind.mmd, ind.sigmaCost, ind.sigmaCapacity, ind.sigmaDemand
+        print sortedPopulation[0].sigmaCost
+        for i in range(int(self.m_PopSize*0.3)):
             gene = sortedPopulation[i].geneSerial
             for p in range(len(self.m_Matrix)):
                 row = self.m_Matrix[p]
                 row[gene[p]] += 1
-
 
     def sample(self):
         geneSerial = []
@@ -181,8 +181,8 @@ class EDA:
             rowSum = float(sum(row))
             cumulateRow = [0 for _ in range(len(row))]
             cumulateRow[0] = row[0] / rowSum
-            for i in range(1,len(row)):
-                cumulateRow[i] = cumulateRow[i-1]+ row[i] / rowSum
+            for i in range(1, len(row)):
+                cumulateRow[i] = cumulateRow[i - 1] + row[i] / rowSum
             rnd = random.random()
             for i in range(len(row)):
                 if cumulateRow[i] >= rnd:
@@ -192,60 +192,29 @@ class EDA:
 
     def evaluate(self):
         iter = 0
-        while iter < self.m_iterMax and self.m_Block < self.m_BlockMax:
-            print "the " + str(iter) + " th iteration"
+        while iter < self.m_iterMax:# and self.m_Block < self.m_BlockMax:
+            #print "the " + str(iter) + " th iteration"
             self.initializePopulation()
             self.update()
             iter += 1
 
-def LoadDataFromText(txtpath):
-    """
-        load data from text,return PROVIDERS,CUSTOMERS
-    """
-    fp = open(txtpath, "r")
-    arr = []
-    for line in fp.readlines():
-        arr.append(line.replace("\n", "").split(" "))
-    fp.close()
-    NumberOfProviders = int(arr[0][0])
-    PROVIDERS = []
-    for i in range(1, NumberOfProviders + 1):
-        tmp = arr[i]
-        tmpProvider = ProviderPlus()
-        tmpProvider.x = float(tmp[0])
-        tmpProvider.y = float(tmp[1])
-        tmpProvider.cnt = int(tmp[2])
-        for j in range(0, tmpProvider.cnt):
-            tmpProvider.capacity.append(float(tmp[j + 3]))
-            tmpProvider.cost.append(float(tmp[j + 3 + tmpProvider.cnt]))
-        PROVIDERS.append(tmpProvider)
-    NumberOfCustomers = int(arr[NumberOfProviders + 1][0])
-    CUSTOMERS = []
-    for i in range(0, NumberOfCustomers):
-        tmp = arr[i + NumberOfProviders + 2]
-        tmpCustomer = Customer()
-        tmpCustomer.x = float(tmp[0])
-        tmpCustomer.y = float(tmp[1])
-        tmpCustomer.demand = float(tmp[2])
-        CUSTOMERS.append(tmpCustomer)
-    return PROVIDERS, CUSTOMERS
 
 if __name__ == "__main__":
     # po is data contains informantion about PROVIDERS and CUSTOMERS
     po = PO()
     # read providers and customers data from text
-    po.PROVIDERS, po.CUSTOMERS = LoadDataFromText(r"alldata.txt")
+    po.PROVIDERS, po.CUSTOMERS = LoadDataFromText(r"data6.txt")
 
     popSize = 300
-    iterMax = 300
-    blockMax = 10
+    iterMax = 100
+    blockMax = 5
     alpha = 10000000.00
     beta = 0.01
-    D = 6.0
+    D = 40.0
     surrogateFlag = False
     surrogateSizeRatio = 0.6
 
     eda = EDA(popSize, iterMax, blockMax, po, alpha, beta, D, surrogateFlag, surrogateSizeRatio)
     eda.evaluate()
-    print "best fitness, cost, serial", eda.m_BestFitness, eda.m_BestCost, eda.m_BestSolution
-
+    print "the best solution serial, fitness, mmd, sigmaCost, sigmaCapacity, sigmaDemand ", \
+        eda.m_BestSolution.geneSerial, eda.m_BestSolution.fitness, eda.m_BestSolution.mmd, eda.m_BestSolution.sigmaCost, eda.m_BestSolution.sigmaCapacity, eda.m_BestSolution.sigmaDemand
