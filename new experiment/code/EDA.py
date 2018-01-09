@@ -166,7 +166,7 @@ class EDA:
         #for ind in sortedPopulation:
         #    print "the individual serial, fitness, mmd, sigmaCost, sigmaCapacity, sigmaDemand ", \
         #        ind.geneSerial, ind.fitness, ind.mmd, ind.sigmaCost, ind.sigmaCapacity, ind.sigmaDemand
-        print sortedPopulation[0].sigmaCost
+        #print sortedPopulation[0].sigmaCost
         for i in range(int(self.m_PopSize*0.3)):
             gene = sortedPopulation[i].geneSerial
             for p in range(len(self.m_Matrix)):
@@ -192,7 +192,7 @@ class EDA:
 
     def evaluate(self):
         iter = 0
-        while iter < self.m_iterMax:# and self.m_Block < self.m_BlockMax:
+        while iter < self.m_iterMax and self.m_Block < self.m_BlockMax:
             #print "the " + str(iter) + " th iteration"
             self.initializePopulation()
             self.update()
@@ -203,18 +203,21 @@ if __name__ == "__main__":
     # po is data contains informantion about PROVIDERS and CUSTOMERS
     po = PO()
     # read providers and customers data from text
-    po.PROVIDERS, po.CUSTOMERS = LoadDataFromText(r"data6.txt")
+    po.PROVIDERS, po.CUSTOMERS = LoadDataFromText(r"..\data\data1.txt")
 
     popSize = 300
-    iterMax = 100
+    iterMax = 300
     blockMax = 5
     alpha = 10000000.00
     beta = 0.01
     D = 40.0
-    surrogateFlag = False
-    surrogateSizeRatio = 0.6
+    surrogateFlag = True
+    ratioList = [i*0.05 for i in range(1,21)]
 
-    eda = EDA(popSize, iterMax, blockMax, po, alpha, beta, D, surrogateFlag, surrogateSizeRatio)
-    eda.evaluate()
-    print "the best solution serial, fitness, mmd, sigmaCost, sigmaCapacity, sigmaDemand ", \
-        eda.m_BestSolution.geneSerial, eda.m_BestSolution.fitness, eda.m_BestSolution.mmd, eda.m_BestSolution.sigmaCost, eda.m_BestSolution.sigmaCapacity, eda.m_BestSolution.sigmaDemand
+    for surrogateSizeRatio in ratioList:
+        print "surrogate size ratio", surrogateSizeRatio
+        eda = EDA(popSize, iterMax, blockMax, po, alpha, beta, D, surrogateFlag, surrogateSizeRatio)
+        eda.evaluate()
+        print "the best solution serial, fitness, mmd, sigmaCost, sigmaCapacity, sigmaDemand ", \
+            eda.m_BestSolution.geneSerial, eda.m_BestSolution.fitness, eda.m_BestSolution.mmd, eda.m_BestSolution.sigmaCost, eda.m_BestSolution.sigmaCapacity, eda.m_BestSolution.sigmaDemand
+        print "---------------------------------"

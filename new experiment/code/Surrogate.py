@@ -8,6 +8,7 @@ from ProviderPlus import ProviderPlus
 import copy
 from SwapChainSolver import SwapChainSolver
 from sklearn.metrics import mean_squared_error
+import math
 class Surrogate:
     def __init__(self, sampleSize, data):
         self.m_X = []
@@ -67,7 +68,8 @@ class Surrogate:
             X_test, y_test = X[offset:,], Y[offset:]
             self.m_Regressor.fit(X_train, y_train)
             mse = mean_squared_error(y_test, self.m_Regressor.predict(X_test))
-            print("MSE: %.4f" % mse)
+            rmse = math.pow(mse,0.5)
+            print("RMSE: %.4f" % rmse)
 
     def predict(self, x):
          return self.m_Regressor.predict(x)
